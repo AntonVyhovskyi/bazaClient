@@ -15,7 +15,10 @@ export interface IParamsValues {
     rsiPeriod: number;
     minRsi: number;
     maxRsi: number;
+    exitMinRsi: number;
+    exitMaxRsi: number;
     lavarage: number;
+
 }
 
 const validationSchema = Yup.object({
@@ -26,6 +29,8 @@ const validationSchema = Yup.object({
     rsiPeriod: Yup.number().min(1).required("Required"),
     minRsi: Yup.number().min(0).max(50).min(1).required("Required"),
     maxRsi: Yup.number().max(100).min(51).required("Required"),
+    exitMinRsi: Yup.number().min(0).max(50).min(1).required("Required"),
+    exitMaxRsi: Yup.number().max(100).min(51).required("Required"),
     lavarage: Yup.number().min(1).required("Required"),
 });
 const Params: FunctionComponent<ParamsProps> = ({ pass }) => {
@@ -38,6 +43,8 @@ const Params: FunctionComponent<ParamsProps> = ({ pass }) => {
         rsiPeriod: 12,
         minRsi: 50,
         maxRsi: 51,
+        exitMinRsi: 55,
+        exitMaxRsi: 45,
         lavarage: 10,
     });
 
@@ -103,7 +110,7 @@ const Params: FunctionComponent<ParamsProps> = ({ pass }) => {
 
                         <label>
                             TP:
-                            <Field type="number" name="tp" className="border p-2 rounded w-full" step="0.1" />
+                            <Field disabled={true} type="number" name="tp" className="border p-2 rounded w-full bg-gray-400 text-gray-400" step="0.1"  />
                             <ErrorMessage name="tp" component="div" className="text-red-500 text-sm" />
                         </label>
 
@@ -123,6 +130,18 @@ const Params: FunctionComponent<ParamsProps> = ({ pass }) => {
                             Max RSI:
                             <Field type="number" name="maxRsi" className="border p-2 rounded w-full" />
                             <ErrorMessage name="maxRsi" component="div" className="text-red-500 text-sm" />
+                        </label>
+                        
+                         <label>
+                            Min Exit RSI:
+                            <Field type="number" name="exitMinRsi" className="border p-2 rounded w-full" />
+                            <ErrorMessage name="exitMinRsi" component="div" className="text-red-500 text-sm" />
+                        </label>
+
+                        <label>
+                            Max Exit RSI:
+                            <Field type="number" name="exitMaxRsi" className="border p-2 rounded w-full" />
+                            <ErrorMessage name="exitMaxRsi" component="div" className="text-red-500 text-sm" />
                         </label>
 
                         <label>

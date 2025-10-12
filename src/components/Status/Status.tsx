@@ -49,6 +49,8 @@ const Status: FunctionComponent<StatusProps> = ({pass}) => {
                         <div><span className="font-medium">rsiPeriod:</span> {params.rsiPeriod}</div>
                         <div><span className="font-medium">minRsi:</span> {params.minRsi}</div>
                         <div><span className="font-medium">maxRsi:</span> {params.maxRsi}</div>
+                        <div><span className="font-medium">min Exit Rsi:</span> {params.exitMinRsi}</div>
+                        <div><span className="font-medium">max Exit Rsi:</span> {params.exitMaxRsi}</div>
                         <div><span className="font-medium">lavarage:</span> {params.lavarage}</div>
                     </div>
                 </div>
